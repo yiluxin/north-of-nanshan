@@ -7,23 +7,55 @@ PostsListContainer = React.createClass({
   getInitialState() {
     return {
       postsLimit: initialPostsLimit,
+      allPostsLoaded: false
     }
+  },
+
+  componentDidMount() {
+    let self = this;
+    let handle = Meteor.setInterval(function() {
+      Meteor.call('getTotalPostsCount', (error, result) => {
+        if (error) {
+          console.log(error);
+        }
+        self.setState({
+          totalPostsCount: result.totalPostsCount,
+          handle: handle
+        });
+      });
+    }, 1000 * 2);
+  },
+
+  componentWillUnmount() {
+    debugger;
+    Meteor.clearInterval(this.state.handle);
   },
 
   getMeteorData() {
     let postsSub = Meteor.subscribe('postsWithinLimit', this.state.postsLimit);
     let posts = Posts.find({}, {sort: {createdAt: -1}}).fetch();
     return {
-      postsReady: postsSub.ready(),
+      subsReady: postsSub.ready(),
       posts: posts
     };
   },
 
   incrementLimit() {
     let limit = this.state.postsLimit;
-    this.setState({
-      postsLimit: limit + postsLimitIncrementer
-    });
+    let totalPostsCount = this.state.totalPostsCount;
+    if (limit >= totalPostsCount) {
+      this.setState({
+        allPostsLoaded: true
+      });
+    } else if (limit > totalPostsCount - postsLimitIncrementer) {
+      this.setState({
+        postsLimit: totalPostsCount
+      });
+    } else {
+      this.setState({
+        postsLimit: limit + postsLimitIncrementer
+      });
+    }
   },
 
   render() {
@@ -32,7 +64,7 @@ PostsListContainer = React.createClass({
         <PostsList
           posts={this.data.posts}
           incrementLimit={this.incrementLimit}/>
-        {this.data.postsReady ? null :<p>正在加载文章，请稍候</p>}
+        {this.data.postsReady || this.state.allPostsLoaded ? null :<p>正在加载文章，请稍候</p>}
       </div>
     );
   }

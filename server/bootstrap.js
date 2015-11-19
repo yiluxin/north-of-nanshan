@@ -22,7 +22,7 @@ Meteor.startup(function() {
         authorId: authorId,
         title: `Post #${i}`,
         content: `This is post number ${i}!`,
-        createdAt: new Date(now + 3600 * 1000 * i)
+        createdAt: new Date(now + i)
       });
     }
   }
