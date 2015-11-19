@@ -20,3 +20,5 @@ react
 reactrouter:react-router
 accounts-password
 check
+random
+audit-argument-checks
