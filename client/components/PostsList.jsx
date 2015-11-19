@@ -13,6 +13,10 @@ PostsList = React.createClass({
     }).scroll();
   },
 
+  componentWillUnmount() {
+    $(window).off('scroll');
+  },
+
   render() {
     var createItem = function(itemText, index) {
       return <li key={index + itemText}>{itemText}</li>;
