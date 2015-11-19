@@ -5,6 +5,8 @@ const {
   history
 } = ReactRouter;
 
+Link = ReactRouter.Link;
+
 const browserHistory = history.createHistory();
 
 Routes = React.createClass({

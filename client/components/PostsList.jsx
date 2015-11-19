@@ -20,7 +20,7 @@ PostsList = React.createClass({
 
 
     let postsList = this.props.posts.map((post) => {
-      return <Post key={post._id} post={post}/>
+      return <PostItem key={post._id} post={post}/>
     });
 
     return (

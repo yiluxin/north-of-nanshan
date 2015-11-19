@@ -12,29 +12,18 @@ PostsListContainer = React.createClass({
 
   getMeteorData() {
     let postsSub = Meteor.subscribe('postsWithinLimit', this.state.postsLimit);
-    let postsCountSub = Meteor.subscribe('totalPostsCount');
     let posts = Posts.find({}, {sort: {createdAt: -1}}).fetch();
     return {
-      postsReady: postsSub.ready() && postsCountSub.ready(),
-      posts: posts,
-      totalPostsCount: Counts.get('posts')
+      postsReady: postsSub.ready(),
+      posts: posts
     };
   },
 
   incrementLimit() {
     let limit = this.state.postsLimit;
-    let total = this.data.totalPostsCount;
-    if (limit >= total) {
-      return;
-    } else if (limit > total - postsLimitIncrementer) {
-      this.setState({
-        postsLimit: total
-      });
-    } else {
-      this.setState({
-        postsLimit: limit + postsLimitIncrementer
-      });
-    }
+    this.setState({
+      postsLimit: limit + postsLimitIncrementer
+    });
   },
 
   render() {
