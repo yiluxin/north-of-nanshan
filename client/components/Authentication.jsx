@@ -22,7 +22,8 @@ Authentication = React.createClass({
       signInOrSignUp: window.location.pathname.substring(1),
       username: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      invitationCode: ''
     }
   },
 
@@ -64,6 +65,12 @@ Authentication = React.createClass({
     });
   },
 
+  handleInvitationCodeChange(event) {
+    this.setState({
+      invitationCode: event.target.value
+    });
+  },
+
   // simplified version
   handleSignIn(event) {
     event.preventDefault();
@@ -84,12 +91,11 @@ Authentication = React.createClass({
 
   // simplified version
   handleSignUp(event) {
-    debugger;
     event.preventDefault();
 
-    let {username, password, passwordConfirmation} = this.state;
-    if (username && password && passwordConfirmation && password === passwordConfirmation) {
-      Accounts.createUser({ username: username, password: password }, (error) => {
+    let {username, password, passwordConfirmation, invitationCode} = this.state;
+    if (username && password && passwordConfirmation && password === passwordConfirmation && invitationCode) {
+      Accounts.createUser({ username: username, password: password, invitationCode: invitationCode }, (error) => {
         if (error) {
           console.log(error);
         } else {
@@ -97,6 +103,7 @@ Authentication = React.createClass({
         }
       });
     } else {
+      alert('缺少必要信息');
       return;
     }
 
@@ -120,9 +127,12 @@ Authentication = React.createClass({
           isLoggingIn={this.data.isLoggingIn}
           username={this.state.username}
           password={this.state.password}
+          passwordConfirmation={this.state.passwordConfirmation}
+          invitationCode={this.state.invitationCode}
           handleUsernameChange={this.handleUsernameChange}
           handlePasswordChange={this.handlePasswordChange}
           handlePasswordConfirmationChange={this.handlePasswordConfirmationChange}
+          handleInvitationCodeChange={this.handleInvitationCodeChange}
           handleSignUp={this.handleSignUp}
           switchToSignIn={this.switchToSignIn}/>
       )}
@@ -173,9 +183,12 @@ let SignUp = React.createClass({
     isLoggingIn: React.PropTypes.bool.isRequired,
     username: React.PropTypes.string.isRequired,
     password: React.PropTypes.string.isRequired,
+    passwordConfirmation: React.PropTypes.string.isRequired,
+    invitationCode: React.PropTypes.string.isRequired,
     handleUsernameChange: React.PropTypes.func.isRequired,
     handlePasswordChange: React.PropTypes.func.isRequired,
     handlePasswordConfirmationChange: React.PropTypes.func.isRequired,
+    handleInvitationCodeChange: React.PropTypes.func.isRequired,
     handleSignUp: React.PropTypes.func.isRequired,
     switchToSignIn: React.PropTypes.func.isRequired
   },
@@ -199,6 +212,11 @@ let SignUp = React.createClass({
             value={this.props.passwordConfirmation}
             onChange={this.props.handlePasswordConfirmationChange}
             placeholder="确认密码"/>
+          <input
+            type="text"
+            value={this.props.invitationCode}
+            onChange={this.props.handleInvitationCodeChange}
+            placeholder="邀请码"/>
           <input
             type="submit"
             disabled={this.props.isLoggingIn}
