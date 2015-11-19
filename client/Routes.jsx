@@ -17,7 +17,6 @@ Routes = React.createClass({
           <IndexRoute component={PostsListContainer}/>
           <Route path="post/:postId" component={Post}/>
           <Route path="new" component={AddPost}/>
-          <Route path="authors" component={Authors}/>
         </Route>
         <Route path="sign-in" component={Authentication}/>
         <Route path="sign-up" component={Authentication}/>
