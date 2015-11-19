@@ -16,7 +16,7 @@ Routes = React.createClass({
         <Route path="/" component={AuthenticatedApp}>
           <IndexRoute component={PostsListContainer}/>
           <Route path="post/:postId" component={Post}/>
-          <Route path="posts/new" component={AddPost}/>
+          <Route path="new" component={AddPost}/>
           <Route path="authors" component={Authors}/>
         </Route>
         <Route path="sign-in" component={Authentication}/>

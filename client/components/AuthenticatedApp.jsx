@@ -37,6 +37,10 @@ AuthenticatedApp = React.createClass({
   },
 
   render() {
+    let containerStyle = {
+      marginTop: '150px'
+    };
+
     return (
       <div>
         {this.data.isLoggingIn ? (
@@ -44,7 +48,7 @@ AuthenticatedApp = React.createClass({
         ) : (
           <div>
             <NavBar signOut={this.signOut}/>
-            <div className="authenticated-app-container">
+            <div className="authenticated-app-container" style={containerStyle}>
               {this.props.children}
             </div>
           </div>
