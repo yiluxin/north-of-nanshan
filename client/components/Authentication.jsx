@@ -12,7 +12,8 @@ Authentication = React.createClass({
    */
   getMeteorData() {
     return {
-      isLoggingIn: Meteor.loggingIn()
+      isLoggingIn: Meteor.loggingIn(),
+      isAuthenticated: Meteor.userId() !== null
     };
   },
 
@@ -22,6 +23,12 @@ Authentication = React.createClass({
       username: '',
       password: '',
       passwordConfirmation: ''
+    }
+  },
+
+  componentWillMount() {
+    if (this.data.isAuthenticated) {
+      this.history.pushState(null, '/');
     }
   },
 
