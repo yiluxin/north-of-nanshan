@@ -50,7 +50,7 @@ AddPost = React.createClass({
             name="title"
             value={this.state.title}
             onChange={this.handleTitleChange}
-            placeholder="用户名"/>
+            placeholder="标题"/>
           <textarea
             value={this.state.content}
             onChange={this.handleContentChange}
