@@ -20,7 +20,7 @@ NavBar = React.createClass({
       <nav className="nav-bar-container" style={navBarStyle}>
         <div>导航栏</div>
         <ul>
-          <li><Link to="/">所有文章</Link></li>
+          <li><Link to="/posts">所有文章</Link></li>
           <li><Link to={pathToMyPosts}>我的文章</Link></li>
           <li><Link to="/new">写文章</Link></li>
           <li><span>{username}</span><button onClick={this.handleLogOut}>登出</button></li>

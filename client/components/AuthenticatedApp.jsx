@@ -27,6 +27,8 @@ AuthenticatedApp = React.createClass({
   componentWillMount() {
     if (!this.data.isAuthenticated) {
       this.history.pushState(null, '/sign-in');
+    } else {
+      this.history.pushState(null, '/posts');
     }
   },
 

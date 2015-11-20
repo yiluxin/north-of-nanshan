@@ -14,7 +14,7 @@ Routes = React.createClass({
     return (
       <Router history={browserHistory}>
         <Route path="/" component={AuthenticatedApp}>
-          <IndexRoute component={PostsListContainer}/>
+          <Route path="posts" component={PostsListContainer}/>
           <Route path="post/:postId" component={Post}/>
           <Route path="new" component={AddPost}/>
           <Route path=":username/posts" component={UserPosts}/>
