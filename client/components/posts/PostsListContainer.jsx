@@ -19,14 +19,17 @@ PostsListContainer = React.createClass({
           console.log(error);
         }
         self.setState({
-          totalPostsCount: result.totalPostsCount,
-          handle: handle
+          totalPostsCount: result.totalPostsCount
         });
       });
     }, 1000 * 2);
+    self.setState({
+      handle: handle
+    });
   },
 
   componentWillUnmount() {
+    debugger;
     Meteor.clearInterval(this.state.handle);
   },
 
