@@ -23,7 +23,7 @@ NavBar = React.createClass({
           <li><Link to="/">所有文章</Link></li>
           <li><Link to={pathToMyPosts}>我的文章</Link></li>
           <li><Link to="/new">写文章</Link></li>
-          <li><button onClick={this.handleLogOut}>登出</button></li>
+          <li><span>{username}</span><button onClick={this.handleLogOut}>登出</button></li>
         </ul>
       </nav>
     );
