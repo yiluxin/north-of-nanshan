@@ -7,7 +7,7 @@ PostsList = React.createClass({
   componentDidMount() {
     let self = this;
     $(window).on('scroll', function(){
-      if( $(window).scrollTop() == $(document).height() - $(window).height() ) {
+      if( $(window).scrollTop() > $(document).height() - $(window).height() - 200 ) {
         self.props.incrementLimit();
       }
     }).scroll();
