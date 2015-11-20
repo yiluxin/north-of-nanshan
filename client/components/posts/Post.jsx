@@ -1,5 +1,9 @@
+const {
+  History
+} = ReactRouter;
+
 Post = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData, History],
 
   //propTypes: {
     //params.postId: React.PropTypes.string.isRequired
@@ -16,6 +20,17 @@ Post = React.createClass({
     };
   },
 
+  handleRemovePost() {
+    if (window.confirm('你确定？')) {
+      Meteor.call('removePost', this.data.post._id, (error, result) => {
+        if (error) {
+          console.log(error);
+        }
+      });
+      this.history.pushState(null, '/');
+    }
+  },
+
   render() {
     return (
       <div>
@@ -25,6 +40,13 @@ Post = React.createClass({
             <p>{this.data.post.content}</p>
             <p>作者：{this.data.author.username}</p>
             <p>创作时间：{this.data.post.createdAt.toDateString()}</p>
+            <div>
+              {this.data.post.authorId === Meteor.userId() ? (
+                <button onClick={this.handleRemovePost}>删除</button>
+              ) : (
+                null
+              )}
+            </div>
           </div>
         ) : (
           <p>文章正在加载中</p>
