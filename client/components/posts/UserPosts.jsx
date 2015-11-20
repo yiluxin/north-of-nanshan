@@ -17,7 +17,7 @@ UserPosts = React.createClass({
         { this.data.subReady ? (
           <PostsList posts={this.data.posts}/>
         ): (
-         <p>正在加载你的文章，请稍候</p>
+         <p>正在加载文章，请稍候</p>
         )}
       </div>
     );
