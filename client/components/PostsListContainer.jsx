@@ -7,7 +7,7 @@ PostsListContainer = React.createClass({
   getInitialState() {
     return {
       postsLimit: initialPostsLimit,
-      allPostsLoaded: false
+      totalPostsCount: 0
     }
   },
 
@@ -43,9 +43,7 @@ PostsListContainer = React.createClass({
     let limit = this.state.postsLimit;
     let totalPostsCount = this.state.totalPostsCount;
     if (limit >= totalPostsCount) {
-      this.setState({
-        allPostsLoaded: true
-      });
+      return;
     } else if (limit > totalPostsCount - postsLimitIncrementer) {
       this.setState({
         postsLimit: totalPostsCount
@@ -63,7 +61,7 @@ PostsListContainer = React.createClass({
         <PostsList
           posts={this.data.posts}
           incrementLimit={this.incrementLimit}/>
-        {this.data.postsReady || this.state.allPostsLoaded ? null :<p>正在加载文章，请稍候</p>}
+        {this.data.postsReady || (this.state.postsLimit >= this.state.totalPostsCount) ? null :<p>正在加载文章，请稍候</p>}
       </div>
     );
   }
