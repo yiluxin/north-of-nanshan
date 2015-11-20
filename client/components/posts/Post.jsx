@@ -38,7 +38,7 @@ Post = React.createClass({
           <div className="post">
             <h1>{this.data.post.title}</h1>
             <p>{this.data.post.content}</p>
-            <p>作者：{this.data.author.username}</p>
+            <p>作者：{this.data.author.username}（<Link to={`/${this.data.author.username}/posts`}>他的所有文章</Link>）</p>
             <p>创作时间：{this.data.post.createdAt.toDateString()}</p>
             <div>
               {this.data.post.authorId === Meteor.userId() ? (
