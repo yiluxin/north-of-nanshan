@@ -29,7 +29,6 @@ PostsListContainer = React.createClass({
   },
 
   componentWillUnmount() {
-    debugger;
     Meteor.clearInterval(this.state.handle);
   },
 
