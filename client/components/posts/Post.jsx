@@ -27,7 +27,7 @@ Post = React.createClass({
           console.log(error);
         }
       });
-      this.history.pushState(null, '/');
+      this.history.pushState(null, '/posts');
     }
   },
 
