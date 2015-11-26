@@ -1,6 +1,6 @@
 const {
-    History
-    } = ReactRouter;
+  History
+  } = ReactRouter;
 
 AddPost = React.createClass({
   mixins: [History],
@@ -49,22 +49,22 @@ AddPost = React.createClass({
   render() {
     let buttonText = this.state.isWaiting ? "正在插" : "确定";
     return (
-        <form onSubmit={this.handleAddPost}>
-          <input
-              type="text"
-              name="title"
-              value={this.state.title}
-              onChange={this.handleTitleChange}
-              placeholder="标题"/>
+      <form onSubmit={this.handleAddPost}>
+        <input
+          type="text"
+          name="title"
+          value={this.state.title}
+          onChange={this.handleTitleChange}
+          placeholder="标题"/>
           <textarea
-              className="marginBottom20"
-              value={this.state.content}
-              onChange={this.handleContentChange}
-              name="content"
-              placeholder="正文"/>
-          <button className="width100" onClick={this.handleAddPost}
-                  disabled={this.state.isWaiting}>{buttonText}</button>
-        </form>
+            className="marginBottom20"
+            value={this.state.content}
+            onChange={this.handleContentChange}
+            name="content"
+            placeholder="正文"/>
+        <button className="width100" onClick={this.handleAddPost}
+                disabled={this.state.isWaiting}>{buttonText}</button>
+      </form>
     );
   }
 });

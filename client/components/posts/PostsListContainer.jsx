@@ -59,8 +59,8 @@ PostsListContainer = React.createClass({
 
   render() {
     return (
-        <PostsList posts={this.data.posts}
-                   incrementLimit={this.incrementLimit}/>
+      <PostsList posts={this.data.posts}
+                 incrementLimit={this.incrementLimit}/>
     );
   }
 });
@@ -97,9 +97,9 @@ PostsList = React.createClass({
     });
     return (
 
-        <ul>
-          {postsList}
-        </ul>
+      <ul>
+        {postsList}
+      </ul>
     );
   }
 });
@@ -111,12 +111,12 @@ PostItem = React.createClass({
 
   render() {
     return (
-        <Link to={`/post/${this.props.post._id}`}>
-          <li className="post">
-            <p className="h2">{this.props.post.title}</p>
-            <p>{this.props.post.content}</p>
-          </li>
-        </Link>
+      <Link to={`/post/${this.props.post._id}`}>
+        <li className="post">
+          <p className="h2">{this.props.post.title}</p>
+          <p>{this.props.post.content}</p>
+        </li>
+      </Link>
     );
   }
 });

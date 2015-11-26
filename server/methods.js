@@ -1,5 +1,5 @@
 Meteor.methods({
-  getTotalPostsCount: function() {
+  getTotalPostsCount: function () {
     if (!this.userId) {
       throw new Meteor.Error('not-authorized', 'Must sign in to read posts');
     }

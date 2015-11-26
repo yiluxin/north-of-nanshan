@@ -13,7 +13,7 @@ UserPosts = React.createClass({
 
   render() {
     return (
-        <PostsList posts={this.data.posts}/>
+      <PostsList posts={this.data.posts}/>
     );
   }
 });
