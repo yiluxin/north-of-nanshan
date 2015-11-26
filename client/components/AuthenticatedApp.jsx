@@ -2,6 +2,7 @@ const {
   History
   } = ReactRouter;
 ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var controller = new ScrollMagic.Controller();
 
 AuthenticatedApp = React.createClass({
   mixins: [ReactMeteorData, History],
@@ -40,7 +41,6 @@ AuthenticatedApp = React.createClass({
     if (!this.data.isAuthenticated) {
       this.history.pushState(null, '/sign-in');
     }
-    var controller = new ScrollMagic.Controller();
 
     var scene = new ScrollMagic.Scene({triggerElement: "#trigger2", duration: 50})
     // animate color and top border in relation to scroll position
@@ -48,7 +48,7 @@ AuthenticatedApp = React.createClass({
         backgroundColor: "#FBFBFB",
         //boxShadow: " -2px -2px 2px  rgba(0, 0, 0, 0.25)"
       }) // the tween durtion can be omitted and defaults to 1
-      //.addIndicators({name: "2 (duration: 100)"}) // add indicators (requires plugin)
+      .addIndicators({name: "2 (duration: 100)"}) // add indicators (requires plugin)
       .addTo(controller);
   },
   handleMenu: function () {
