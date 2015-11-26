@@ -13,7 +13,7 @@ PostsListContainer = React.createClass({
 
   componentDidMount() {
     let self = this;
-    let handle = Meteor.setInterval(function() {
+    let handle = Meteor.setInterval(function () {
       Meteor.call('getTotalPostsCount', (error, result) => {
         if (error) {
           console.log(error);
@@ -59,12 +59,64 @@ PostsListContainer = React.createClass({
 
   render() {
     return (
-      <div>
-        <PostsList
-          posts={this.data.posts}
-          incrementLimit={this.incrementLimit}/>
-        {this.data.postsReady || (this.state.postsLimit >= this.state.totalPostsCount) ? null :<p>正在加载文章，请稍候</p>}
-      </div>
+      <PostsList posts={this.data.posts}
+                 incrementLimit={this.incrementLimit}/>
+    );
+  }
+});
+
+PostsList = React.createClass({
+  propTypes: {
+    posts: React.PropTypes.array.isRequired,
+    incrementLimit: React.PropTypes.func
+  },
+
+  componentDidMount() {
+    if (this.props.incrementLimit) {
+      let self = this;
+      $(window).on('scroll', function () {
+        if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
+          self.props.incrementLimit();
+        }
+      }).scroll();
+    }
+  },
+
+  componentWillUnmount() {
+    if (this.props.incrementLimit) {
+      $(window).off('scroll');
+    }
+  },
+
+  render() {
+    var createItem = function (itemText, index) {
+      return <li key={index + itemText}>{itemText}</li>;
+    };
+    let postsList = this.props.posts.map((post) => {
+      return <PostItem key={post._id} post={post}/>
+    });
+    return (
+
+      <ul>
+        {postsList}
+      </ul>
+    );
+  }
+});
+
+PostItem = React.createClass({
+  propTypes: {
+    post: React.PropTypes.object.isRequired
+  },
+
+  render() {
+    return (
+      <Link to={`/post/${this.props.post._id}`}>
+        <li className="post">
+          <p className="h2">{this.props.post.title}</p>
+          <p>{this.props.post.content}</p>
+        </li>
+      </Link>
     );
   }
 });

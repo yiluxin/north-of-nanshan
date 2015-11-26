@@ -1,6 +1,6 @@
 const {
   History
-} = ReactRouter;
+  } = ReactRouter;
 
 AddPost = React.createClass({
   mixins: [History],
@@ -8,7 +8,8 @@ AddPost = React.createClass({
   getInitialState() {
     return {
       title: '',
-      content: ''
+      content: '',
+      isWaiting: false
     }
   },
 
@@ -32,34 +33,35 @@ AddPost = React.createClass({
         if (error) {
           console.log(error);
         } else {
+
           this.history.pushState(null, `/post/${result}`);
         }
       });
+      this.setState({isWaiting: true});
     } else {
       return;
     }
   },
 
   render() {
+    let buttonText = this.state.isWaiting ? "正在插" : "确定";
     return (
-      <div>
-        <div>写文章</div>
-        <form onSubmit={this.handleAddPost}>
-          <input
-            type="text"
-            name="title"
-            value={this.state.title}
-            onChange={this.handleTitleChange}
-            placeholder="标题"/>
+      <form onSubmit={this.handleAddPost}>
+        <input
+          type="text"
+          name="title"
+          value={this.state.title}
+          onChange={this.handleTitleChange}
+          placeholder="标题"/>
           <textarea
+            className="marginBottom20"
             value={this.state.content}
             onChange={this.handleContentChange}
-            name="content"/>
-          <input
-            type="submit"
-            value="确定"/>
-        </form>
-      </div>
+            name="content"
+            placeholder="正文"/>
+        <button className="width100" onClick={this.handleAddPost}
+                disabled={this.state.isWaiting}>{buttonText}</button>
+      </form>
     );
   }
 });

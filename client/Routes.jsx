@@ -3,7 +3,7 @@ const {
   Route,
   IndexRoute,
   history
-} = ReactRouter;
+  } = ReactRouter;
 
 Link = ReactRouter.Link;
 

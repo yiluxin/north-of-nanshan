@@ -5,7 +5,7 @@ Meteor.methods({
     check(title, String);
     check(content, String);
 
-    if (! this.userId) {
+    if (!this.userId) {
       throw new Meteor.Error('not-authorized', 'Must sign in to post');
     }
 
@@ -22,16 +22,16 @@ Meteor.methods({
   removePost(postId) {
     check(postId, String);
 
-    if (! this.userId) {
+    if (!this.userId) {
       throw new Meteor.Error('not-authorized', 'Must sign in to remove post');
     }
 
-    let postToRemove = Posts.findOne({ _id: postId });
+    let postToRemove = Posts.findOne({_id: postId});
 
     if (this.userId !== postToRemove.authorId) {
       throw new Meteor.Error('not-authorized', 'Must be the author to remove a post');
     }
 
-    Posts.remove({ _id: postId });
+    Posts.remove({_id: postId});
   }
 });

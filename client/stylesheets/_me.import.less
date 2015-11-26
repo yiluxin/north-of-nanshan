@@ -1,0 +1,241 @@
+.authentication-container,
+.sign-up-container,
+.sign-in-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.authentication-container {
+
+  input, button {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .ToBeNamed_1 {
+    background-color: white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.1);
+    //height: 300px;
+    padding-top: 20px;
+  }
+  .avatar {
+    background: no-repeat center;
+    background-size: cover;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin: 0 auto 10px auto;
+  }
+  .name {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 500;
+    color: #444444;
+    padding: 5px 0 5px 0;
+
+  }
+  .area {
+    text-align: center;
+    font-size: 12px;
+    color: grey;
+    padding: 10px 0 10px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+  }
+  .intro {
+    text-align: center;
+    font-size: 12px;
+    color: grey;
+    padding: 10px 0 20px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+  }
+
+  /*ME页面的*/
+  .NavInMe {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    //padding: 10px 0 10px 0;
+    border-top: 1px solid #eee;
+    a {
+      text-align: center;
+      color: #9a9a9a;
+      text-decoration: none;
+      &:hover {
+        color: #bd081c;
+      }
+      li {
+        font-size: 11px;
+        line-height: 16px;
+        list-style-type: none;
+        padding: 10px 20px 10px 20px;
+        font-weight: normal;
+        div > :first-child {
+
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  #ContainerInMe {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.sign-up-container, .sign-in-container {
+  width: 90%;
+  max-width: 570px;
+}
+
+.headBox {
+  height: 80px;
+}
+
+.authenticated-app-container {
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.nanshan {
+  text-align: center;
+  padding: 100px 0 100px 0;
+  font-family: "Playfair Display", sans-serif;
+  .nanshanIntro {
+    font-size: 12px;
+    font-family: "PT Serif", serif;
+    font-weight: normal;
+    padding: 5px;
+  }
+}
+
+.ResponseWidth {
+  margin: 0 auto 0 auto;
+  transition: 0.2s ease-in-out 0.2s;
+}
+
+.color666 {
+  color: #666
+}
+
+.color999 {
+  color: #999;
+}
+
+.marginBottom50 {
+  margin-bottom: 50px;
+}
+
+.marginTop50 {
+  margin-top: 50px;
+}
+
+.marginBottom20 {
+  margin-bottom: 20px;
+}
+
+.size13 {
+  font-size: 24px;
+}
+
+.fontWeightBold {
+  font-weight: bold;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.authenticated-app-container {
+  transition: 0.2s ease-in-out 0.2s;
+  width: 100%;
+  ul {
+    width: 100%;
+    max-width: 570px;
+    li {
+      margin-bottom: 20px;
+    }
+  }
+  .h2 {
+    font-weight: bold;
+    font-size: 48px;
+    color: rgb(34, 34, 34);
+    margin-bottom: 16px;
+  }
+  form {
+    width: 100%;
+    max-width: 570px;
+  }
+  a {
+    text-decoration: none;
+    color: #222222;
+    li {
+      border-radius: 3px;
+      transition: 0.2s ease-in-out 0.2s;
+      padding: 14px;
+      &:hover {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25), 0 1px 0 0 rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+}
+
+.TopNav2 {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  background-color: #222;
+  top: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  li {
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    font-size: 12px;
+    line-height: 30px;
+    list-style-type: none;
+    padding: 0 30px 0 30px;
+    cursor: pointer;
+    &:hover {
+      background-color: #292929;
+      color: white;
+    }
+  }
+}
+
+p, h1 {
+  word-wrap: break-word;
+}
+
+.post {
+  width: 90%;
+}
