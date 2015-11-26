@@ -14,14 +14,12 @@ AddPost = React.createClass({
   },
 
   handleTitleChange(event) {
-    console.log(event.target.value);
     this.setState({
       title: event.target.value
     });
   },
 
   handleContentChange(event) {
-    console.log(event.target.value);
     this.setState({
       content: event.target.value
     });
@@ -41,7 +39,6 @@ AddPost = React.createClass({
       });
       this.setState({isWaiting: true});
     } else {
-      console.log("没有state");
       return;
     }
   },
