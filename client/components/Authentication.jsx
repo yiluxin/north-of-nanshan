@@ -1,6 +1,6 @@
 const {
-  History
-} = ReactRouter;
+    History
+    } = ReactRouter;
 
 Authentication = React.createClass({
   mixins: [ReactMeteorData, History],
@@ -95,7 +95,7 @@ Authentication = React.createClass({
 
     let {username, password, passwordConfirmation, invitationCode} = this.state;
     if (username && password && passwordConfirmation && password === passwordConfirmation && invitationCode) {
-      Accounts.createUser({ username: username, password: password, invitationCode: invitationCode }, (error) => {
+      Accounts.createUser({username: username, password: password, invitationCode: invitationCode}, (error) => {
         if (error) {
           console.log(error);
         } else {
@@ -111,32 +111,32 @@ Authentication = React.createClass({
 
   render() {
     return (
-      <div className="authentication-container">
-      <div>Authentication</div>
-      {this.state.signInOrSignUp === 'sign-in' ? (
-        <SignIn
-          isLoggingIn={this.data.isLoggingIn}
-          username={this.state.username}
-          password={this.state.password}
-          handleUsernameChange={this.handleUsernameChange}
-          handlePasswordChange={this.handlePasswordChange}
-          handleSignIn={this.handleSignIn}
-          switchToSignUp={this.switchToSignUp}/>
-      ) : (
-        <SignUp
-          isLoggingIn={this.data.isLoggingIn}
-          username={this.state.username}
-          password={this.state.password}
-          passwordConfirmation={this.state.passwordConfirmation}
-          invitationCode={this.state.invitationCode}
-          handleUsernameChange={this.handleUsernameChange}
-          handlePasswordChange={this.handlePasswordChange}
-          handlePasswordConfirmationChange={this.handlePasswordConfirmationChange}
-          handleInvitationCodeChange={this.handleInvitationCodeChange}
-          handleSignUp={this.handleSignUp}
-          switchToSignIn={this.switchToSignIn}/>
-      )}
-      </div>
+        <div className="authentication-container">
+          <div className=" fontWeightBold color666 size13 marginBottom50">Nanshan North</div>
+          {this.state.signInOrSignUp === 'sign-in' ? (
+          <SignIn
+              isLoggingIn={this.data.isLoggingIn}
+              username={this.state.username}
+              password={this.state.password}
+              handleUsernameChange={this.handleUsernameChange}
+              handlePasswordChange={this.handlePasswordChange}
+              handleSignIn={this.handleSignIn}
+              switchToSignUp={this.switchToSignUp}/>
+              ) : (
+          <SignUp
+              isLoggingIn={this.data.isLoggingIn}
+              username={this.state.username}
+              password={this.state.password}
+              passwordConfirmation={this.state.passwordConfirmation}
+              invitationCode={this.state.invitationCode}
+              handleUsernameChange={this.handleUsernameChange}
+              handlePasswordChange={this.handlePasswordChange}
+              handlePasswordConfirmationChange={this.handlePasswordConfirmationChange}
+              handleInvitationCodeChange={this.handleInvitationCodeChange}
+              handleSignUp={this.handleSignUp}
+              switchToSignIn={this.switchToSignIn}/>
+              )}
+        </div>
     );
   }
 });
@@ -154,26 +154,27 @@ let SignIn = React.createClass({
 
   render() {
     return (
-      <div className="sign-in-container">
-        <div>SignIn</div>
-        <form onSubmit={this.props.handleSignIn}>
-          <input
-            type="text"
-            value={this.props.username}
-            onChange={this.props.handleUsernameChange}
-            placeholder="用户名"/>
-          <input
-            type="password"
-            value={this.props.password}
-            onChange={this.props.handlePasswordChange}
-            placeholder="密码"/>
-          <input
-            type="submit"
-            disabled={this.props.isLoggingIn}
-            value={this.props.isLoggingIn ? '正在登录' : '登陆'}/>
-        </form>
-        <div>没有账号？<button onClick={this.props.switchToSignUp}>点击注册</button></div>
-      </div>
+        <div className="sign-in-container">
+          <div className="color999 marginBottom20">SignIn</div>
+          <form onSubmit={this.props.handleSignIn}>
+            <input
+                type="text"
+                value={this.props.username}
+                onChange={this.props.handleUsernameChange}
+                placeholder="用户名"/>
+            <input
+                type="password"
+                value={this.props.password}
+                onChange={this.props.handlePasswordChange}
+                placeholder="密码"/>
+            <button className="width100"
+                    onclick="{this.props.handleSignIn}"
+                    disabled={this.props.isLoggingIn}>
+              {this.props.isLoggingIn ? '正在登录' : '登陆'}
+            </button>
+          </form>
+          <button className="nobg" onClick={this.props.switchToSignUp}>没有账号？点击注册</button>
+        </div>
     );
   }
 });
@@ -195,35 +196,35 @@ let SignUp = React.createClass({
 
   render() {
     return (
-      <div className="sign-up-container">
-        <div>SignUp</div>
-        <form onSubmit={this.props.handleSignUp}>
-          <input
-            type="text"
-            value={this.props.username}
-            onChange={this.props.handleUsernameChange}
-            placeholder="用户名"/>
-          <input
-            type="password"
-            value={this.props.password}
-            onChange={this.props.handlePasswordChange}
-            placeholder="密码"/>
-          <input type="password"
-            value={this.props.passwordConfirmation}
-            onChange={this.props.handlePasswordConfirmationChange}
-            placeholder="确认密码"/>
-          <input
-            type="text"
-            value={this.props.invitationCode}
-            onChange={this.props.handleInvitationCodeChange}
-            placeholder="邀请码"/>
-          <input
-            type="submit"
-            disabled={this.props.isLoggingIn}
-            value={this.props.isLoggingIn ? '正在注册' : '注册'}/>
-        </form>
-        <div>已有账号？<button onClick={this.props.switchToSignIn}>点击登陆</button></div>
-      </div>
+        <div className="sign-up-container">
+          <div className="color999 marginBottom20">SignUp</div>
+          <form onSubmit={this.props.handleSignUp}>
+            <input
+                type="text"
+                value={this.props.username}
+                onChange={this.props.handleUsernameChange}
+                placeholder="用户名"/>
+            <input
+                type="password"
+                value={this.props.password}
+                onChange={this.props.handlePasswordChange}
+                placeholder="密码"/>
+            <input type="password"
+                   value={this.props.passwordConfirmation}
+                   onChange={this.props.handlePasswordConfirmationChange}
+                   placeholder="确认密码"/>
+            <input
+                type="text"
+                value={this.props.invitationCode}
+                onChange={this.props.handleInvitationCodeChange}
+                placeholder="邀请码"/>
+            <button className="width100"
+                    disabled={this.props.isLoggingIn}>
+              {this.props.isLoggingIn ? '正在注册' : '注册'}
+            </button>
+          </form>
+          <button className="nobg" onClick={this.props.switchToSignIn}>已有账号？点击登陆</button>
+        </div>
     );
   }
 });

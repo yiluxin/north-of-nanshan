@@ -4,28 +4,28 @@ NavBar = React.createClass({
   },
 
   render() {
-    let navBarStyle={
-      position: "fixed",
-      top: 0,
-      left: 0,
-      zIndex: 999,
-      width: "100%",
-      height: "125px",
-      backgroundColor: 'grey'
-    }
+
 
     const username = Meteor.user() && Meteor.user().username;
     const pathToMyPosts = `/${username}/posts`;
     return (
-      <nav className="nav-bar-container" style={navBarStyle}>
-        <div>导航栏</div>
-        <ul>
-          <li><Link to="/posts">所有文章</Link></li>
-          <li><Link to={pathToMyPosts}>我的文章</Link></li>
-          <li><Link to="/new">写文章</Link></li>
-          <li><span>{username}</span><button onClick={this.handleLogOut}>登出</button></li>
+
+        <ul className={this.props.classes} style={this.props.style} onClick={this.props.handleMenu}>
+          <Link to="/posts">
+            <li>所有文章</li>
+          </Link>
+          <Link to={pathToMyPosts}>
+            <li>我的文章</li>
+          </Link>
+          <Link to="/new">
+            <li>写文章</li>
+          </Link>
+          <li onClick={this.handleLogOut}>
+            登出
+          </li>
         </ul>
-      </nav>
+
     );
   }
 });
+
