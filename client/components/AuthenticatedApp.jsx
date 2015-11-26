@@ -46,9 +46,8 @@ AuthenticatedApp = React.createClass({
     // animate color and top border in relation to scroll position
       .setTween(".authenticated-app-container", {
         backgroundColor: "#FBFBFB",
-        //boxShadow: " -2px -2px 2px  rgba(0, 0, 0, 0.25)"
-      }) // the tween durtion can be omitted and defaults to 1
-      .addIndicators({name: "2 (duration: 100)"}) // add indicators (requires plugin)
+      })
+      // the tween durtion can be omitted and defaults to 1
       .addTo(controller);
   },
   handleMenu: function () {
