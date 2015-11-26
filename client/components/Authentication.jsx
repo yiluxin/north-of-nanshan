@@ -167,9 +167,10 @@ let SignIn = React.createClass({
             value={this.props.password}
             onChange={this.props.handlePasswordChange}
             placeholder="密码"/>
-          <button className="width100"
-                  onclick="{this.props.handleSignIn}"
-                  disabled={this.props.isLoggingIn}>
+          <button
+            className="width100"
+            onclick="{this.props.handleSignIn}"
+            disabled={this.props.isLoggingIn}>
             {this.props.isLoggingIn ? '正在登录' : '登陆'}
           </button>
         </form>
@@ -209,17 +210,19 @@ let SignUp = React.createClass({
             value={this.props.password}
             onChange={this.props.handlePasswordChange}
             placeholder="密码"/>
-          <input type="password"
-                 value={this.props.passwordConfirmation}
-                 onChange={this.props.handlePasswordConfirmationChange}
-                 placeholder="确认密码"/>
+          <input
+            type="password"
+            value={this.props.passwordConfirmation}
+            onChange={this.props.handlePasswordConfirmationChange}
+            placeholder="确认密码"/>
           <input
             type="text"
             value={this.props.invitationCode}
             onChange={this.props.handleInvitationCodeChange}
             placeholder="邀请码"/>
-          <button className="width100"
-                  disabled={this.props.isLoggingIn}>
+          <button
+            className="width100"
+            disabled={this.props.isLoggingIn}>
             {this.props.isLoggingIn ? '正在注册' : '注册'}
           </button>
         </form>
